@@ -306,6 +306,8 @@ export class TableView extends Backbone.View {
         });
         $stickyHeader.css({
           position: 'relative',
+          // sometimes top is set to negative, add guard Math.max($table.height(), 0)
+          // on $table.height() to ensure it'll never be negative
           top: Math.min(Math.max(topVP + offset - topCur, 0), Math.max($table.height(), 0)),
         });
       }
